@@ -1,0 +1,19 @@
+{
+  "name": "ta",
+  "version": "1.0.0",
+  "description": "automating my ta work lol",
+  "main": "index.js",
+  "scripts": {
+    "test": "tt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fredenck/juniorTA.git"
+  },
+  "author": "Frederick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fredenck/juniorTA/issues"
+  },
+  "homepage": "https://github.com/Fredenck/juniorTA#readme"
+}
