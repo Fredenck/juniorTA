@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Fredenck/juniorTA/issues"
   },
-  "homepage": "https://github.com/Fredenck/juniorTA#readme"
+  "homepage": "https://github.com/Fredenck/juniorTA#readme",
+  "dependencies": {
+    "googleapis": "^67.0.0"
+  }
 }
