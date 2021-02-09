@@ -78,25 +78,28 @@ function getList(drive, pageToken){
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
+    q: '"0Bx0PI61hO3PBfkRNd3JIcDd5V0x3bENvbUZjRzFnMmw3Y0RIZDFIOXQwV3RRYkdzeDFOc1k" in parents',
     pageToken: pageToken ? pageToken : '',
     fields: 'nextPageToken, files(*)',
     // fields: 'nextPageToken, files(id, name)',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const files = res.data.files;
-    const owners = {};
     if (files.length) {
-      console.log('Files:');
+      console.log('Loading:');
       // files.map((file) => {
       //   console.log(`${file.name} (${file.id})`);
       // });
       files.forEach(file => {
         // console.log(file);
-        owners = res.data.owners,
+        const owners = file.permissions;
         owners.forEach(owner => {
-          console.log(owner);
+          if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
+            return true;
+          }
+          console.log(owner.displayName);
         })
-        console.log();
+        // console.log();
       });
       if (res.data.nextPageToken) {
         getList(drive, res.data.nextPageToken);
