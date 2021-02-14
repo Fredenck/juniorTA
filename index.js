@@ -8,7 +8,12 @@ const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
-
+const people = ["Arnold Cai", "Connor Chen", "Anshul Govindu", "Bryan Jerish", "Kripa Kini",
+"Bhavesh Kumar", "Michael Lan", "Patrick Li", "Wanning Lu", "Yousuf Mustafa", "Anushka Nair",
+"Vinay Patil", "Siddharth Ramshankar", "Vikram Senthil", "Aaryan Shah", "Rishab Shah", "Uma Shankar",
+"Sanidhya Singh", "Kerrine Tai", "Masroor Uddin", "Lili Wan", "Harshith Yallampalli", "Edward Zhang",
+"Rick Zhang", "Jerry Zhao"];
+let submitted = new Array(people.length).fill(0);
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
@@ -78,7 +83,7 @@ function getList(drive, pageToken){
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
-    q: '"0Bx0PI61hO3PBfkRNd3JIcDd5V0x3bENvbUZjRzFnMmw3Y0RIZDFIOXQwV3RRYkdzeDFOc1k" in parents',
+    q: '"0Bx0PI61hO3PBfm9UYmRHakQ5M0FEUWNKUVNTb0FKSWJ5M0J5MGFJVmkxVFdHTktPaGMzUU0" in parents',
     pageToken: pageToken ? pageToken : '',
     fields: 'nextPageToken, files(*)',
     // fields: 'nextPageToken, files(id, name)',
@@ -86,7 +91,7 @@ function getList(drive, pageToken){
     if (err) return console.log('The API returned an error: ' + err);
     const files = res.data.files;
     if (files.length) {
-      console.log('Loading:');
+      // console.log('Loading:');
       // files.map((file) => {
       //   console.log(`${file.name} (${file.id})`);
       // });
@@ -94,10 +99,15 @@ function getList(drive, pageToken){
         // console.log(file);
         const owners = file.permissions;
         owners.forEach(owner => {
-          if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
+          // if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
+          if (owner.displayName == "Frederick Z" || owner.displayName == "AP Calculus AB Period 2 teachers" || owner.displayName == "Anne Chung"){
             return true;
           }
           console.log(owner.displayName);
+          if (people.indexOf(owner.displayName) != -1){
+            submitted[people.indexOf(owner.displayName)] = 10;
+          }
+          console.log(submitted);
         })
         // console.log();
       });
