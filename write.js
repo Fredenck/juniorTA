@@ -9,8 +9,10 @@ const sheetID = "640563990"; //AB Ch6
 // const fileID = "1wFeBIVO3BtQ6D9jHSy5EygqUS7Vn4Rr2uQtDoAtQmEg"; //P4, 5
 // const sheetID = "394944654"; //Alg1 Ch6
 
+const sourceFile = require('./index.js');
+
 // If modifying these scopes, delete token.json.
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
@@ -20,7 +22,7 @@ const TOKEN_PATH = 'token.json';
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listMajors);
+  authorize(JSON.parse(content), writ);
 });
 
 /**
@@ -73,17 +75,33 @@ function getNewToken(oAuth2Client, callback) {
   });
 }
 
-function listMajors(auth, submitted) {
+function writ(auth) {
   const sheets = google.sheets({version: 'v4', auth});
-  sheets.spreadsheets.values.get({
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-    // https://sheets.googleapis.com/v4/spreadsheets/spreadsheetId/values/Sheet1!B1?valueInputOption=USER_ENTERED
-    {
-      "range": sheetID+'!D2:D26',
-      "majorDimension": "COLUMNS",
-      "values": [submitted]
+  let values = [
+    [
+      // Cell values ...
+    ],
+    // Additional rows ...
+  ];
+  console.log(sourceFile.submittedd);
+  values = sourceFile.submittedd
+  const resource = {
+    values,
+  };
+  const spreadsheetId = "1VKiHYandQxEfkgT-Apyy3HOPzb_aNdo7j-IIhvSJDYI";
+  const range = 'AB Ch6!D2:D26';
+  const valueInputOption = 'RAW';
+  this.sheetsService.spreadsheets.values.update({
+    spreadsheetId,
+    range,
+    valueInputOption,
+    resource,
+  }, (err, result) => {
+    if (err) {
+      // Handle error
+      console.log(err);
+    } else {
+      console.log('%d cells updated.', result.updatedCells);
     }
   });
 }

@@ -19,6 +19,7 @@ fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Drive API.
   authorize(JSON.parse(content), listFiles);
+  module.exports.submittedd = submitted;
 });
 
 /**
@@ -108,6 +109,12 @@ function getList(drive, pageToken){
             submitted[people.indexOf(owner.displayName)] = 10;
           }
           console.log(submitted);
+
+          for (let i=0; i<submitted.length; i++){
+            if (submitted[i] == 0){
+              console.log(people[i] + ": 0");
+            }
+          }
         })
         // console.log();
       });
