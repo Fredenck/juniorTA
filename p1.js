@@ -8,11 +8,12 @@ const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
-const people = ["Arnold Cai", "Connor Chen", "Anshul Govindu", "Bryan Jerish", "Kripa Kini",
-"Bhavesh Kumar", "Michael Lan", "Patrick Li", "Wanning Lu", "Yousuf Mustafa", "Anushka Nair",
-"Vinay Patil", "Siddharth Ramshankar", "Vikram Senthil", "Aaryan Shah", "Rishab Shah", "Uma Shankar",
-"Sanidhya Singh", "Kerrine Tai", "Masroor Uddin", "Lili Wan", "Harshith Yallampalli", "Edward Zhang",
-"Rick Zhang", "Jerry Zhao"];
+const people = ["Ryan Dai", "Ryan Dong", "Srideep Dornala", "Arjun Ganesan", "Dhruv Gupta",
+"Maxwell Hong", "Isabelle Hsu", "Yue Jiang", "Ansh Kharbanda", "William Kim", "Isabel Lai",
+"Louis Law", "Sean Lin", "Thompson Ma", "Payasa Manandhar", "Eshaan Mistry", "Sidarth Raman",
+"Gauri Renjith", "Aaryan Rustagi", "Tanish Sathish", "Ananya Setty", "Aarushi Sharma",
+"Suhani Shukla", "Ambareesh Shyam Sundar", "Selina Song", "Mithil Srungarapu", "Ritvik Suraparaju",
+"Shreyas Verma", "Vincent Wang", "Enxi Zhang", "Alice Zhu", "Ellen Zulkarnain"];
 
 let submitted = new Array(people.length).fill(0);
 // Load client secrets from a local file.
@@ -85,7 +86,7 @@ function getList(drive, pageToken){
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
-    q: '"0Bx0PI61hO3PBfjduNEJLdUZ5d2NkWmJ3LXVyWjI5dU1oYTBQMllhdUNEdTBOa21pd0g1RDg" in parents',
+    q: '"0Bx0PI61hO3PBfi1xaG80b1NwTUtLNHIydnNZU2FvVl9Rdm5xeVRCNW1jYzFVVVJDc2Ryc2c" in parents',
     pageToken: pageToken ? pageToken : '',
     fields: 'nextPageToken, files(*)',
     // fields: 'nextPageToken, files(id, name)',
