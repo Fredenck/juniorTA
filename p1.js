@@ -86,7 +86,7 @@ function getList(drive, pageToken){
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
-    q: '"0Bx0PI61hO3PBfi1xaG80b1NwTUtLNHIydnNZU2FvVl9Rdm5xeVRCNW1jYzFVVVJDc2Ryc2c" in parents',
+    q: '"0Bx0PI61hO3PBfjNLNVVvNlhIOHJZeXowalBfTjY0RllMU2FOQU1FSmYxNkFqT2pFa0NaQ3c" in parents',
     pageToken: pageToken ? pageToken : '',
     fields: 'nextPageToken, files(*)',
     // fields: 'nextPageToken, files(id, name)',
@@ -103,7 +103,7 @@ function getList(drive, pageToken){
         const owners = file.permissions;
         owners.forEach(owner => {
           // if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
-          if (owner.displayName == "Frederick Z" || owner.displayName == "AP Calculus AB Period 2 teachers" || owner.displayName == "Anne Chung"){
+          if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
             return true;
           }
           console.log(owner.displayName);

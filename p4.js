@@ -8,8 +8,8 @@ const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
-const people = ["Mehran Abbasi", "Brooke Alonzo", "Nishant Asopa", "Paige Chen", "Ian Cook".
-"Mario Delgado", "Rodrigo Antonio Granados Perez", "Destany Hostnick", "Evan Jordon",
+const people = ["Mehran Abbasi", "Brooke Alonzo", "Nishant Asopa", "Paige Chen", "Ian Cook",
+"Mario Delgado", "Rodrigo Antonio Granados Perez", "Destany Hostnick", "Evan Jordan",
 "Prisha Joshi", "Jayse Keeley", "Hadeed Khaki", "Nicholas Lau", "Harold Lee", "Tyson Lincavage",
 "Safwan Malik", "Gabriel Moya", "Jooyeon Oh", "Mia Ontiveros", "Emma Pham", "Samuel Ramirez Salas",
 "Patricia Riley", "Bharghav Satyanarayana", "Karan Singh", "Tabatha Soto", "Yuji Trisnadi",
@@ -86,7 +86,7 @@ function getList(drive, pageToken){
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
-    q: '"0Bx0PI61hO3PBfjduNEJLdUZ5d2NkWmJ3LXVyWjI5dU1oYTBQMllhdUNEdTBOa21pd0g1RDg" in parents',
+    q: '"0Bx0PI61hO3PBfkNLM2JrUTU2cHBZTDU0SzdTZGNFRVVnRUxEbnZiQkdGWnp1VXJ6WE1GV2c" in parents',
     pageToken: pageToken ? pageToken : '',
     fields: 'nextPageToken, files(*)',
     // fields: 'nextPageToken, files(id, name)',

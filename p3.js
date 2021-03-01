@@ -9,7 +9,7 @@ const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
 // time.
 const TOKEN_PATH = 'token.json';
 const people = ["Rohan Adwankar", "Jiwon Ahn", "Alisha Bhat", "Nandini Borkar", "Louis Chan",
-"Saksham Duria", "Edi Du", "Lisa Feng", "Ben Kao", "Alvin Lin", "Mandy Liu", "Princeton Liu",
+"Saksham Dhuria", "Edi Du", "Lisa Feng", "Ben Kao", "Alvin Lin", "Mandy Liu", "Princeton Liu",
 "Urmi Mandal", "Ayush Patel", "Samah Qadeer", "Aadhav Rajesh", "Anvesh Sharma", "Hanqing Sun",
 "Neha Suresh", "Cameron Tran", "Daniel Wang", "Linden Wang", "Kaiwen Xiao", "Helen Yuan",
 "Jeffery Zang", "Michael Zheng", "Sophia Zhu"];
@@ -85,7 +85,7 @@ function getList(drive, pageToken){
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
-    q: '"0Bx0PI61hO3PBfi1xaG80b1NwTUtLNHIydnNZU2FvVl9Rdm5xeVRCNW1jYzFVVVJDc2Ryc2c" in parents',
+    q: '"0Bx0PI61hO3PBfmZtRGlDRC15eXptZ3lZb1hBb3dKQTE3NGhCTUYtY19oamdxYkY1c0NNcVk" in parents',
     pageToken: pageToken ? pageToken : '',
     fields: 'nextPageToken, files(*)',
     // fields: 'nextPageToken, files(id, name)',
@@ -102,7 +102,7 @@ function getList(drive, pageToken){
         const owners = file.permissions;
         owners.forEach(owner => {
           // if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
-          if (owner.displayName == "Frederick Z" || owner.displayName == "AP Calculus AB Period 2 teachers" || owner.displayName == "Anne Chung"){
+          if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc Period 3 teachers" || owner.displayName == "Anne Chung"){
             return true;
           }
           console.log(owner.displayName);
