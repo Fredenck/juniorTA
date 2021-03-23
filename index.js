@@ -8,13 +8,46 @@ const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
-const people = ["Ryan Dai", "Ryan Dong", "Srideep Dornala", "Arjun Ganesan", "Dhruv Gupta",
-"Isabelle Hsu", "Yue Jiang", "Ansh Kharbanda", "William Kim", "Isabel Lai",
-"Louis Law", "Sean Lin", "Thompson Ma", "Payasa Manandhar", "Eshaan Mistry", "Sidarth Raman",
-"Gauri Renjith", "Aaryan Rustagi", "Tanish Sathish", "Ananya Setty", "Aarushi Sharma",
-"Suhani Shukla", "Ambareesh Shyam Sundar", "Selina Song", "Mithil Srungarapu", "Ritvik Suraparaju",
-"Shreyas Verma", "Vincent Wang", "Enxi Zhang", "Alice Zhu", "Ellen Zulkarnain"];
-
+const prompt = require('prompt-sync')();
+const period = Number(prompt('Period: '));
+console.log(period);
+const key = prompt('Key: ');
+var people = [];
+if (period == 1){
+  people = ["Ryan Dai", "Ryan Dong", "Srideep Dornala", "Arjun Ganesan", "Dhruv Gupta",
+  "Isabelle Hsu", "Yue Jiang", "Ansh Kharbanda", "William Kim", "Isabel Lai",
+  "Louis Law", "Sean Lin", "Thompson Ma", "Payasa Manandhar", "Eshaan Mistry", "Sidarth Raman",
+  "Gauri Renjith", "Aaryan Rustagi", "Tanish Sathish", "Ananya Setty", "Aarushi Sharma",
+  "Suhani Shukla", "Ambareesh Shyam Sundar", "Selina Song", "Mithil Srungarapu", "Ritvik Suraparaju",
+  "Shreyas Verma", "Vincent Wang", "Enxi Zhang", "Alice Zhu", "Ellen Zulkarnain"];
+}else if (period == 2){
+  people = ["Arnold Cai", "Connor Chen", "Anshul Govindu", "Bryan Jerish", "Kripa Kini",
+  "Bhavesh Kumar", "Michael Lan", "Patrick Li", "Wanning Lu", "Yousuf Mustafa", "Anushka Nair",
+  "Vinay Patil", "Siddharth Ramshankar", "Vikram Senthil", "Aaryan Shah", "Rishab Shah", "Uma Shankar",
+  "Sanidhya Singh", "Kerrine Tai", "Masroor Uddin", "Lili Wan", "Harshith Yallampalli", "Edward Zhang",
+  "Rick Zhang", "Jerry Zhao"];
+}else if (period == 3){
+  people = ["Rohan Adwankar", "Jiwon Ahn", "Alisha Bhat", "Nandini Borkar", "Louis Chan",
+  "Saksham Dhuria", "Edi Du", "Lisa Feng", "Ben Kao", "Alvin Lin", "Mandy Liu", "Princeton Liu",
+  "Urmi Mandal", "Ayush Patel", "Samah Qadeer", "Aadhav Rajesh", "Anvesh Sharma", "Hanqing Sun",
+  "Neha Suresh", "Cameron Tran", "Daniel Wang", "Linden Wang", "Kaiwen Xiao", "Helen Yuan",
+  "Jeffery Zang", "Michael Zheng", "Sophia Zhu"];
+}else if (period == 4){
+  people = ["Mehran Abbasi", "Brooke Alonzo", "Nishant Asopa", "Paige Chen", "Ian Cook",
+  "Mario Delgado", "Rodrigo Antonio Granados Perez", "Destany Hostnick", "Evan Jordan",
+  "Prisha Joshi", "Jayse Keeley", "Hadeed Khaki", "Nicholas Lau", "Harold Lee", "Tyson Lincavage",
+  "Safwan Malik", "Gabriel Moya", "Jooyeon Oh", "Mia Ontiveros", "Emma Pham", "Samuel Ramirez Salas",
+  "Patricia Riley", "Bharghav Satyanarayana", "Karan Singh", "Tabatha Soto", "Yuji Trisnadi",
+  "Siddarth Vermeulen", "Eryn Yoo"];
+}else if (period == 5){
+  people = ["Aria Blackmun", "Ashley Block", "Juan Chanelo", "Elliotte Chrisp", "Jasmin Cruz",
+  "Gurtej Deol", "Diksha Diksha", "Kirsten Anne Elloso", "Daniel Fernandez", "Madison Gossette", "Ariya Jamarani",
+   "Carly Jernigan", "Leo Kuo", "Mattania Liu", "Roberto Loera", "Vaishali Madoori", "Adrian Medina", "Kyal Moe",
+  "Varun Nair", "Samara Orozco-Tapia", "Joshua Pan", "Diego Preciado", "Alexzander Rafael", "Krish Rajan",
+   "Alan Rivera Serrato", "Geo Sampaga", "Sonya Shetty", "Mehtaab Singh", "Bir Sohal", "Delilah Tinoco",
+   "Rachael Tiong", "Travis Tsuei", "Malachi Vega"];
+}
+console.log(people);
 let submitted = new Array(people.length).fill(0);
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
@@ -83,10 +116,13 @@ function listFiles(auth) {
   getList(drive, '');
 }
 function getList(drive, pageToken){
+  const str = '"' + key + '"' + ' in parents';
+  console.log(str);
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
-    q: '"0Bx0PI61hO3PBfmxEQUtoRTBJbjJFcnNidlg4aHU3cTdYUG9fUzVlNUJKUGt2SnN1RnhmUTQ" in parents',
+    // q: '"0Bx0PI61hO3PBfi10NFpmYlE4aXVqSkpTMjNxNVBlZEh6OXdRa0FUTzJkT25UYXpaYUhwTnM" in parents',
+    q: str,
     pageToken: pageToken ? pageToken : '',
     fields: 'nextPageToken, files(*)',
     // fields: 'nextPageToken, files(id, name)',
