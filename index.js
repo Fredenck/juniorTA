@@ -40,11 +40,11 @@ if (period == 1){
   "Patricia Riley", "Bharghav Satyanarayana", "Karan Singh", "Tabatha Soto", "Yuji Trisnadi",
   "Siddarth Vermeulen", "Eryn Yoo"];
 }else if (period == 5){
-  people = ["Aria Blackmun", "Ashley Block", "Juan Chanelo", "Elliotte Chrisp", "Jasmin Cruz",
+  people = ["AAria Blackmun", "Ashley Block", "Juan Chanelo", "Elliotte Chrisp", "Jasmin Cruz",
   "Gurtej Deol", "Diksha Diksha", "Kirsten Anne Elloso", "Daniel Fernandez", "Madison Gossette", "Ariya Jamarani",
    "Carly Jernigan", "Leo Kuo", "Mattania Liu", "Roberto Loera", "Vaishali Madoori", "Adrian Medina", "Kyal Moe",
   "Varun Nair", "Samara Orozco-Tapia", "Joshua Pan", "Diego Preciado", "Alexzander Rafael", "Krish Rajan",
-   "Alan Rivera Serrato", "Geo Sampaga", "Sonya Shetty", "Mehtaab Singh", "Bir Sohal", "Delilah Tinoco",
+   "Alan Rivera Serrato", "Sonya Shetty", "Mehtaab Singh", "Bir Sohal", "Delilah Tinoco",
    "Rachael Tiong", "Travis Tsuei", "Malachi Vega"];
 }
 console.log(people);
@@ -54,7 +54,7 @@ fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Drive API.
   authorize(JSON.parse(content), listFiles);
-  module.exports.submittedd = submitted;
+  // module.exports.submitted = submitted;
 });
 
 /**
@@ -139,12 +139,21 @@ function getList(drive, pageToken){
         const owners = file.permissions;
         owners.forEach(owner => {
           // if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
-          if (owner.displayName == "Frederick Z" || owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" || owner.displayName == "Anne Chung"){
+          if (owner.displayName == "Frederick Z" ||
+          owner.displayName == "Accelerated Alg2/PreCalc 1 teachers" ||
+          owner.displayName == "Algebra 1 Period 5 teachers" ||
+          owner.displayName == "Algebra 1 Period 4 teachers" ||
+          owner.displayName == "AP Calculus AB Period 2 teachers" ||
+          owner.displayName == "Accelerated Alg2/PreCalc Period 3 teachers" ||
+          owner.displayName == "Anne Chung"){
             return true;
           }
-          console.log(owner.displayName);
+          // console.log(owner.displayName);
           if (people.indexOf(owner.displayName) != -1){
             submitted[people.indexOf(owner.displayName)] = 10;
+          }else{
+            console.log("I DID FIND THIS NAME IN MY LIST: " + owner.displayName)
+            prompt("Type any letter to continue: ");
           }
           console.log(submitted);
 

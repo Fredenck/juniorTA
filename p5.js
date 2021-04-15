@@ -12,7 +12,7 @@ const people = ["Aria Blackmun", "Ashley Block", "Juan Chanelo", "Elliotte Chris
 "Gurtej Deol", "Diksha Diksha", "Kirsten Anne Elloso", "Daniel Fernandez", "Madison Gossette", "Ariya Jamarani",
  "Carly Jernigan", "Leo Kuo", "Mattania Liu", "Roberto Loera", "Vaishali Madoori", "Adrian Medina", "Kyal Moe",
 "Varun Nair", "Samara Orozco-Tapia", "Joshua Pan", "Diego Preciado", "Alexzander Rafael", "Krish Rajan",
- "Alan Rivera Serrato", "Geo Sampaga", "Sonya Shetty", "Mehtaab Singh", "Bir Sohal", "Delilah Tinoco",
+ "Alan Rivera Serrato", "Sonya Shetty", "Mehtaab Singh", "Bir Sohal", "Delilah Tinoco",
  "Rachael Tiong", "Travis Tsuei", "Malachi Vega"];
 
 let submitted = new Array(people.length).fill(0);
