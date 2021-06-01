@@ -40,7 +40,7 @@ if (period == 1){
   "Patricia Riley", "Bharghav Satyanarayana", "Karan Singh", "Tabatha Soto", "Yuji Trisnadi",
   "Siddarth Vermeulen", "Eryn Yoo"];
 }else if (period == 5){
-  people = ["AAria Blackmun", "Ashley Block", "Juan Chanelo", "Elliotte Chrisp", "Jasmin Cruz",
+  people = ["Aria Blackmun", "Ashley Block", "Juan Chanelo", "Elliotte Chrisp", "Jasmin Cruz",
   "Gurtej Deol", "Diksha Diksha", "Kirsten Anne Elloso", "Daniel Fernandez", "Madison Gossette", "Ariya Jamarani",
    "Carly Jernigan", "Leo Kuo", "Mattania Liu", "Roberto Loera", "Vaishali Madoori", "Adrian Medina", "Kyal Moe",
   "Varun Nair", "Samara Orozco-Tapia", "Joshua Pan", "Diego Preciado", "Alexzander Rafael", "Krish Rajan",
@@ -156,6 +156,9 @@ function getList(drive, pageToken){
             prompt("Type any letter to continue: ");
           }
           console.log(submitted);
+          for (i = 0; i < submitted.length; i++){
+            console.log(submitted[i])
+          }  
 
           for (let i=0; i<submitted.length; i++){
             if (submitted[i] == 0){
