@@ -47,7 +47,7 @@ if (period == 1){
    "Alan Rivera Serrato", "Sonya Shetty", "Mehtaab Singh", "Bir Sohal", "Delilah Tinoco",
    "Rachael Tiong", "Travis Tsuei", "Malachi Vega"];
 }
-console.log(people);
+// console.log(people);
 let submitted = new Array(people.length).fill(0);
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
@@ -117,7 +117,7 @@ function listFiles(auth) {
 }
 function getList(drive, pageToken){
   const str = '"' + key + '"' + ' in parents';
-  console.log(str);
+  // console.log(str);
   drive.files.list({
     pageSize: 10,
     // q: "name='samm'",
@@ -155,16 +155,16 @@ function getList(drive, pageToken){
             console.log("I DID FIND THIS NAME IN MY LIST: " + owner.displayName)
             prompt("Type any letter to continue: ");
           }
-          console.log(submitted);
-          for (i = 0; i < submitted.length; i++){
-            console.log(submitted[i])
-          }  
+          // console.log(submitted);
+          // for (i = 0; i < submitted.length; i++){
+          //   console.log(submitted[i])
+          // }  
 
-          for (let i=0; i<submitted.length; i++){
-            if (submitted[i] == 0){
-              console.log(people[i] + ": 0");
-            }
-          }
+          // for (let i=0; i<submitted.length; i++){
+          //   if (submitted[i] == 0){
+          //     console.log(people[i] + ": 0");
+          //   }
+          // }
         })
         // console.log();
       });
